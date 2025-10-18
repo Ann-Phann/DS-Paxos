@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import javax.annotation.processing.Messager;
-
 import com.an.paxos.profile.ConfigReader;
 import com.an.paxos.profile.MemberInfo;
 import com.an.paxos.profile.MemberProfile;
@@ -32,9 +30,12 @@ public class CouncilMember implements Runnable {
     ServerSocket serverSocket;
 
     boolean isRunning = true;
+    // add lock for synchronisation instead of relying on sleep for busy-waiting
+    public final Object lock = new Object();
+
     // proposal number generator
     private final ProposalNumberGenerator proposalNumberGenerator;
-
+    
     // ========= Paxos state variables =========
     // Acceptor state
     private volatile int highestPromisedN = -1; // highest proposal number promised (n)

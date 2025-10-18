@@ -1,6 +1,8 @@
 package com.an.paxos.communcation;
 
 import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -56,6 +58,9 @@ public class Messenger {
             // establish connection
             Socket socket = new Socket(peer.getHost(), peer.getPort());
             member.addOutgoingSocket(peer.getPort(), socket);
+
+            // initialise input stream for incoming messages
+            ObjectInput inputStream = new ObjectInputStream(socket.getInputStream());
 
             // open the output stream
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());

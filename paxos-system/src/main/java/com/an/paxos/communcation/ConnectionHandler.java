@@ -23,8 +23,9 @@ public class ConnectionHandler implements Runnable {
         this.member = member;
         this.peerSocket = peerSocket;
 
-        this.inputStream = new ObjectInputStream(peerSocket.getInputStream());
         this.outputStream = new ObjectOutputStream(peerSocket.getOutputStream());
+        this.inputStream = new ObjectInputStream(peerSocket.getInputStream());
+        this.outputStream.flush(); // Ensure header is sent immediately
         this.messageProcess = new MessageProcess(member, outputStream);
     }
     @Override

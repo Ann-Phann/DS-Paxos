@@ -13,7 +13,7 @@ import com.an.paxos.profile.ConfigReader;
 public class ProposerLogic {
     private final CouncilMember member;
     private final int MAJORITY;
-    private static final int TIMEOUT_MS = 10000; // Timeout for waiting responses
+    private static final int TIMEOUT_MS = 5000; // Timeout for waiting responses
 
     public ProposerLogic(CouncilMember member) {
         this.member = member;
@@ -73,22 +73,56 @@ public class ProposerLogic {
 
         long startTime = System.currentTimeMillis();
 
-        while (System.currentTimeMillis() - startTime < TIMEOUT_MS) {
+        synchronized (member.lock) {
             List<Promise> promises = member.promisedResponses.get(n);
+
+            while (member.isRunning() && (promises == null || promises.size() < MAJORITY)) {
+                long timeElapsed = System.currentTimeMillis() - startTime;
+                long timeRemaining = TIMEOUT_MS - timeElapsed;
+
+                if (timeRemaining <= 0) {
+                    System.out.println(member.getMemIdInt() + " Phase 1a FAILED (Timeout)");
+                    member.promisedResponses.remove(n);
+                    return null;
+                }
+
+                try {
+                    // Wait for the Lock to be notified, or until the timeout
+                    member.lock.wait(timeRemaining);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    member.promisedResponses.remove(n);
+                    return null;
+                }
+                
+                // Re-read promises list after waking up
+                promises = member.promisedResponses.get(n);
+            }
+        
+            // If we exit the loop, the quorum must have been met (or we shut down)
             if (promises != null && promises.size() >= MAJORITY) {
                 System.out.println(member.getMemIdInt() + " received majority PROMISES for n=" + n);
+                
+                // ** 1. FIND THE HIGHEST N ACROSS ALL PROMISES **
+                int highestN = n; // Start with our own N
+                for (Promise p : promises) {
+                    // p.proposalNumber is the highest N Acceptor has PROMISED to
+                    if (p.proposalNumber > highestN) {
+                        highestN = p.proposalNumber;
+                    }
+                }
+
+                // ** 2. CRITICAL: UPDATE THE GENERATOR **
+                if (highestN > n) {
+                    member.getProposalNumberGenerator().updateCounter(highestN);
+                }
+
                 return promises;
             }
-            // Sleep briefly to avoid busy-waiting
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                break;
-            }
+            // Should only be reached if member.isRunning() is false
+            member.promisedResponses.remove(n);
+            return null;
         }
-        System.out.println(member.getMemIdInt() + " Phase 1a FAILED (Timeout or NACKs)");
-        return null; 
     }
 
     /*
@@ -107,23 +141,40 @@ public class ProposerLogic {
 
         long startTime = System.currentTimeMillis();
 
-        while (System.currentTimeMillis() - startTime < TIMEOUT_MS) {
+        synchronized (member.lock) {
             List<Accept> accepts = member.acceptedResponses.get(n);
+
+            while (member.isRunning() && (accepts == null || accepts.size() < MAJORITY)) {
+                long timeElapsed = System.currentTimeMillis() - startTime;
+                long timeRemaining = TIMEOUT_MS - timeElapsed;
+
+                if (timeRemaining <= 0) {
+                    System.out.println(member.getMemIdInt() + " Phase 2a FAILED (Timeout)");
+                    member.acceptedResponses.remove(n); 
+                    return false;
+                }
+
+                try {
+                    // Wait for the lock to be notified, or until the timeout
+                    member.lock.wait(timeRemaining);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    member.acceptedResponses.remove(n); 
+                    return false;
+                }
+                
+                // Re-read accepts list after waking up
+                accepts = member.acceptedResponses.get(n);
+            }
+        
+            // If we exit the loop, the quorum must have been met (or we shut down)
             if (accepts != null && accepts.size() >= MAJORITY) {
                 System.out.println(member.getMemIdInt() + " received majority ACCEPTED for n=" + n);
                 return true;
             }
-
-            // Sleep briefly to avoid busy-waiting
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                break;
-            }
+            // Should only be reached if member.isRunning() is false
+            return false;
         }
-        System.out.println(member.getMemIdInt() + " Phase 2a FAILED (Timeout or NACKs)");
-        return false;
     }
 
     private void phase3Decide(int n, int v) {
@@ -170,4 +221,7 @@ public class ProposerLogic {
         return adoptedValue;
     }
     
+    public int getMajority() {
+        return MAJORITY;
+    }
 }
