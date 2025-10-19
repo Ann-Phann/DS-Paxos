@@ -1,0 +1,513 @@
+[INFO] 
+[INFO] --- exec:3.6.2:java (default-cli) @ paxos-system ---
+Starting Paxos Council for Scenario 3 (Fault Tolerance Tests)...
+Loaded config for M1: localhost:9001
+Loaded config for M2: localhost:9002
+Loaded config for M3: localhost:9003
+Loaded config for M4: localhost:9004
+Loaded config for M5: localhost:9005
+Loaded config for M6: localhost:9006
+Loaded config for M7: localhost:9007
+Loaded config for M8: localhost:9008
+Loaded config for M9: localhost:9009
+Setting up members with mixed profiles:
+M1 failed to connect to M2 at localhost:9002. Retrying later...
+M1 failed to connect to M3 at localhost:9003. Retrying later...
+M1 failed to connect to M4 at localhost:9004. Retrying later...
+M1 failed to connect to M5 at localhost:9005. Retrying later...
+M1 failed to connect to M6 at localhost:9006. Retrying later...
+M1 failed to connect to M7 at localhost:9007. Retrying later...
+M1 failed to connect to M8 at localhost:9008. Retrying later...
+M1 failed to connect to M9 at localhost:9009. Retrying later...
+Started M1 with profile: RELIABLE
+M2 failed to connect to M1 at localhost:9001. Retrying later...
+M2 failed to connect to M3 at localhost:9003. Retrying later...
+M2 failed to connect to M4 at localhost:9004. Retrying later...
+M2 failed to connect to M5 at localhost:9005. Retrying later...
+Member M1 listening on port 9001 with profile: RELIABLE
+M2 failed to connect to M6 at localhost:9006. Retrying later...
+M2 failed to connect to M7 at localhost:9007. Retrying later...
+M2 failed to connect to M8 at localhost:9008. Retrying later...
+M2 failed to connect to M9 at localhost:9009. Retrying later...
+Started M2 with profile: LATENT
+Member M2 listening on port 9002 with profile: LATENT
+M3 connected to peer M1 on port 9001
+M3 connected to peer M2 on port 9002
+M3 failed to connect to M4 at localhost:9004. Retrying later...
+M3 failed to connect to M5 at localhost:9005. Retrying later...
+M3 failed to connect to M6 at localhost:9006. Retrying later...
+M3 failed to connect to M7 at localhost:9007. Retrying later...
+M3 failed to connect to M8 at localhost:9008. Retrying later...
+M3 failed to connect to M9 at localhost:9009. Retrying later...
+Started M3 with profile: FAILURE
+Member M3 listening on port 9003 with profile: FAILURE
+M4 connected to peer M1 on port 9001
+M4 connected to peer M2 on port 9002
+M4 connected to peer M3 on port 9003
+M4 failed to connect to M5 at localhost:9005. Retrying later...
+M4 failed to connect to M6 at localhost:9006. Retrying later...
+M4 failed to connect to M7 at localhost:9007. Retrying later...
+M4 failed to connect to M8 at localhost:9008. Retrying later...
+M4 failed to connect to M9 at localhost:9009. Retrying later...
+Started M4 with profile: RELIABLE
+Member M4 listening on port 9004 with profile: RELIABLE
+M5 connected to peer M1 on port 9001
+M5 connected to peer M2 on port 9002
+M5 connected to peer M3 on port 9003
+M5 connected to peer M4 on port 9004
+M5 failed to connect to M6 at localhost:9006. Retrying later...
+M5 failed to connect to M7 at localhost:9007. Retrying later...
+M5 failed to connect to M8 at localhost:9008. Retrying later...
+M5 failed to connect to M9 at localhost:9009. Retrying later...
+Started M5 with profile: RELIABLE
+Member M5 listening on port 9005 with profile: RELIABLE
+M6 connected to peer M1 on port 9001
+M6 connected to peer M2 on port 9002
+M6 connected to peer M3 on port 9003
+M6 connected to peer M4 on port 9004
+M6 connected to peer M5 on port 9005
+M6 failed to connect to M7 at localhost:9007. Retrying later...
+M6 failed to connect to M8 at localhost:9008. Retrying later...
+M6 failed to connect to M9 at localhost:9009. Retrying later...
+Started M6 with profile: RELIABLE
+Member M6 listening on port 9006 with profile: RELIABLE
+M7 connected to peer M1 on port 9001
+M7 connected to peer M2 on port 9002
+M7 connected to peer M3 on port 9003
+M7 connected to peer M4 on port 9004
+M7 connected to peer M5 on port 9005
+M7 connected to peer M6 on port 9006
+M7 failed to connect to M8 at localhost:9008. Retrying later...
+M7 failed to connect to M9 at localhost:9009. Retrying later...
+Started M7 with profile: RELIABLE
+Member M7 listening on port 9007 with profile: RELIABLE
+M8 connected to peer M1 on port 9001
+M8 connected to peer M2 on port 9002
+M8 connected to peer M3 on port 9003
+M8 connected to peer M4 on port 9004
+M8 connected to peer M5 on port 9005
+M8 connected to peer M6 on port 9006
+M8 connected to peer M7 on port 9007
+M8 failed to connect to M9 at localhost:9009. Retrying later...
+Started M8 with profile: RELIABLE
+Member M8 listening on port 9008 with profile: RELIABLE
+M9 connected to peer M1 on port 9001
+M9 connected to peer M2 on port 9002
+M9 connected to peer M3 on port 9003
+M9 connected to peer M4 on port 9004
+M9 connected to peer M5 on port 9005
+M9 connected to peer M6 on port 9006
+M9 connected to peer M7 on port 9007
+M9 connected to peer M8 on port 9008
+Started M9 with profile: RELIABLE
+Member M9 listening on port 9009 with profile: RELIABLE
+
+Waiting 5 seconds for connections to establish...
+M1 connected to peer M2 on port 9002
+M1 connected to peer M3 on port 9003
+M1 connected to peer M4 on port 9004
+M1 connected to peer M5 on port 9005
+M1 connected to peer M6 on port 9006
+M1 connected to peer M7 on port 9007
+M2 connected to peer M1 on port 9001
+M1 connected to peer M8 on port 9008
+M2 connected to peer M3 on port 9003
+M1 connected to peer M9 on port 9009
+M2 connected to peer M4 on port 9004
+M1 established connections to all peers.
+M2 connected to peer M5 on port 9005
+M2 connected to peer M6 on port 9006
+M2 connected to peer M7 on port 9007
+M2 connected to peer M8 on port 9008
+M3 connected to peer M4 on port 9004
+M2 connected to peer M9 on port 9009
+M2 established connections to all peers.
+M3 connected to peer M5 on port 9005
+M3 connected to peer M6 on port 9006
+M3 connected to peer M7 on port 9007
+M3 connected to peer M8 on port 9008
+M4 connected to peer M5 on port 9005
+M3 connected to peer M9 on port 9009
+M3 established connections to all peers.
+M4 connected to peer M6 on port 9006
+M4 connected to peer M7 on port 9007
+M4 connected to peer M8 on port 9008
+M4 connected to peer M9 on port 9009
+M4 established connections to all peers.
+M5 connected to peer M6 on port 9006
+M5 connected to peer M7 on port 9007
+M5 connected to peer M8 on port 9008
+M5 connected to peer M9 on port 9009
+M5 established connections to all peers.
+M6 connected to peer M7 on port 9007
+M6 connected to peer M8 on port 9008
+M6 connected to peer M9 on port 9009
+M6 established connections to all peers.
+M7 connected to peer M8 on port 9008
+M7 connected to peer M9 on port 9009
+M7 established connections to all peers.
+M8 connected to peer M9 on port 9009
+M8 established connections to all peers.
+---------------------------------------------------------
+
+=========================================================
+TEST 3A: Standard Member (M4) Proposes '4'
+Expected: Consensus reached quickly despite M2 (latent) and M3 (failure).
+=========================================================
+M4 initiating proposal for value 4...
+M4 starting Phase 1a with Prepare(n=14)
+M6 sent PROMISE for N=14
+M6 sent PROMISE for N=14
+M8 sent PROMISE for N=14
+M1 sent PROMISE for N=14
+M8 sent PROMISE for N=14
+M1 sent PROMISE for N=14
+M7 sent PROMISE for N=14
+M7 sent PROMISE for N=14
+M4 received PROMISE for N=14
+M5 sent PROMISE for N=14
+M5 sent PROMISE for N=14
+M4 received PROMISE for N=14
+M9 sent PROMISE for N=14
+M9 sent PROMISE for N=14
+M4 received PROMISE for N=14
+M4 received PROMISE for N=14
+M4 received PROMISE for N=14
+M4 received majority PROMISES for n=14
+M4 starting Phase 2a with RequestAccept(n=14, v=4)
+M4 received PROMISE for N=14
+M1 sent ACCEPTED for N=14
+M5 sent ACCEPTED for N=14
+M6 sent ACCEPTED for N=14
+M9 sent ACCEPTED for N=14
+M7 sent ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M8 sent ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M4 received majority ACCEPTED for n=14
+M4 starting Phase 3 with DECIDE(n=14, v=4)
+M4 proposal attempt finished.
+
+--- Test 3A Finished ---
+
+M7: CONSENSUS: M4 has been elected Council President!
+M1: CONSENSUS: M4 has been elected Council President!
+M5: CONSENSUS: M4 has been elected Council President!
+M9: CONSENSUS: M4 has been elected Council President!
+M6: CONSENSUS: M4 has been elected Council President!
+M3 sent PROMISE for N=14
+M3 sent PROMISE for N=14
+M8: CONSENSUS: M4 has been elected Council President!
+M3 DROPPED message: REQUEST_ACCEPT
+M3: CONSENSUS: M4 has been elected Council President!
+M2 sent PROMISE for N=14
+M2 sent PROMISE for N=14
+M2 sent ACCEPTED for N=14
+M2: CONSENSUS: M4 has been elected Council President!
+
+--- Resetting all member decision states for Test 3C ---
+
+=========================================================
+TEST 3B: Latent Member (M2) Proposes '2'
+Expected: Consensus reached, possibly after a delay/retries due to M2's latency.
+=========================================================
+M2 initiating proposal for value 2...
+M2 starting Phase 1a with Prepare(n=12)
+M3 DROPPED message: PREPARE
+M8 NACK: 12 < promised=14
+M5 NACK: 12 < promised=14
+M4 sent PROMISE for N=12
+M4 sent PROMISE for N=12
+M9 NACK: 12 < promised=14
+M7 NACK: 12 < promised=14
+M6 NACK: 12 < promised=14
+M1 NACK: 12 < promised=14
+M2 received PROMISE for N=12
+M2 Phase 1a FAILED (Timeout)
+M2 starting Phase 1a with Prepare(n=22)
+M6 sent PROMISE for N=22
+M9 sent PROMISE for N=22
+M6 sent PROMISE for N=22
+M9 sent PROMISE for N=22
+M4 sent PROMISE for N=22
+M4 sent PROMISE for N=22
+M8 sent PROMISE for N=22
+M8 sent PROMISE for N=22
+M5 sent PROMISE for N=22
+M5 sent PROMISE for N=22
+M1 sent PROMISE for N=22
+M1 sent PROMISE for N=22
+M7 sent PROMISE for N=22
+M7 sent PROMISE for N=22
+M3 sent PROMISE for N=22
+M3 sent PROMISE for N=22
+M2 received PROMISE for N=22
+M2 received PROMISE for N=22
+M2 received PROMISE for N=22
+M2 received PROMISE for N=22
+M2 received PROMISE for N=22
+M2 received majority PROMISES for n=22
+M2 adopting value V=4 from N=14
+M2 starting Phase 2a with RequestAccept(n=22, v=4)
+M5 sent ACCEPTED for N=22
+M6 sent ACCEPTED for N=22
+M9 sent ACCEPTED for N=22
+M1 sent ACCEPTED for N=22
+M8 sent ACCEPTED for N=22
+M7 sent ACCEPTED for N=22
+M2 received PROMISE for N=22
+M4 sent ACCEPTED for N=22
+M2 received PROMISE for N=22
+M2 received PROMISE for N=22
+M3 sent ACCEPTED for N=22
+M2 received ACCEPTED for N=22
+M2 received ACCEPTED for N=22
+M2 received ACCEPTED for N=22
+M2 received ACCEPTED for N=22
+M2 received ACCEPTED for N=22
+M2 received majority ACCEPTED for n=22
+M2 starting Phase 3 with DECIDE(n=22, v=4)
+M2 proposal attempt finished successfully.
+
+--- Test 3B Finished ---
+
+M9: CONSENSUS: M4 has been elected Council President!
+M5: CONSENSUS: M4 has been elected Council President!
+M7: CONSENSUS: M4 has been elected Council President!
+M6: CONSENSUS: M4 has been elected Council President!
+M1: CONSENSUS: M4 has been elected Council President!
+M8: CONSENSUS: M4 has been elected Council President!
+M4: CONSENSUS: M4 has been elected Council President!
+M3: CONSENSUS: M4 has been elected Council President!
+
+--- Resetting all member decision states for Test 3C ---
+
+=========================================================
+TEST 3C: Failing Member (M3) Proposes, Crashes, M4 Retries with '4'
+Expected: M3 fails and M4 successfully drives consensus on '4'.
+=========================================================
+M3 initiating proposal for value 3 (and crashing after PREPARE)...
+M3 starting Phase 1a with Prepare(n=13)
+M5 NACK: 13 < promised=22
+M8 NACK: 13 < promised=22
+M1 NACK: 13 < promised=22
+M6 NACK: 13 < promised=22
+M4 NACK: 13 < promised=22
+M7 NACK: 13 < promised=22
+M9 NACK: 13 < promised=22
+CRASH SIMULATED: Member M3 is forcibly stopped.
+Member M3 has stopped running.
+Connection Handler Error for M8: null
+Connection Handler Error for M4: null
+Connection Handler Error for M3: Socket closed
+Connection Handler Error for M3: Socket closed
+M3 proposal attempt finished (due to crash or failure).Connection Handler Error for M6: null
+
+M4 initiating proposal for value 4 (to ensure consensus is reached)...Connection Handler Error for M3: Socket closed
+
+M4 starting Phase 1a with Prepare(n=24)Connection Handler Error for M5: null
+
+Connection Handler Error for M9: null
+Connection Handler Error for M1: null
+Connection Handler Error for M3: Socket closed
+Connection Handler Error for M3: Socket closed
+Connection Handler Error for M3: Socket closed
+Connection Handler Error for M3: Socket closed
+Connection Handler Error for M3: Socket closed
+Connection Handler Error for M7: null
+M1 sent PROMISE for N=24
+M1 sent PROMISE for N=24
+M6 sent PROMISE for N=24
+M6 sent PROMISE for N=24
+M9 sent PROMISE for N=24
+M8 sent PROMISE for N=24
+M9 sent PROMISE for N=24
+M5 sent PROMISE for N=24
+M8 sent PROMISE for N=24
+M5 sent PROMISE for N=24
+M7 sent PROMISE for N=24
+M4 received PROMISE for N=24
+M7 sent PROMISE for N=24
+M4 received PROMISE for N=24
+M4 received PROMISE for N=24
+M4 received PROMISE for N=24
+M4 received PROMISE for N=24
+M4 received majority PROMISES for n=24
+M4 adopting value V=4 from N=22
+M4 starting Phase 2a with RequestAccept(n=24, v=4)
+M6 sent ACCEPTED for N=24
+M7 sent ACCEPTED for N=24
+M8 sent ACCEPTED for N=24
+M9 sent ACCEPTED for N=24
+M4 received ACCEPTED for N=24
+M4 received ACCEPTED for N=24
+M4 received PROMISE for N=24
+M4 received ACCEPTED for N=24
+M4 received ACCEPTED for N=24
+M1 sent ACCEPTED for N=24
+M5 sent ACCEPTED for N=24
+M4 received ACCEPTED for N=24
+M4 received majority ACCEPTED for n=24
+M4 starting Phase 3 with DECIDE(n=24, v=4)
+M4 proposal attempt finished.
+
+--- Test 3C Finished ---
+
+M5: CONSENSUS: M4 has been elected Council President!
+M7: CONSENSUS: M4 has been elected Council President!
+M8: CONSENSUS: M4 has been elected Council President!
+M9: CONSENSUS: M4 has been elected Council President!
+M1: CONSENSUS: M4 has been elected Council President!
+M6: CONSENSUS: M4 has been elected Council President!
+M2 NACK: 13 < promised=14
+Connection Handler Error for M2: null
+M3 sent PROMISE for N=24
+M3 sent PROMISE for N=24
+Connection Handler Error for M4: null
+M2 sent PROMISE for N=24
+M2 sent PROMISE for N=24
+M2 sent ACCEPTED for N=24
+M2: CONSENSUS: M4 has been elected Council President!
+
+--- All Scenarios Complete. Initiating Shutdown. ---
+
+Shutting down all members...
+Member M1 has stopped running.
+Connection Handler Error for M8: null
+Connection Handler Error for M9: null
+Connection Handler Error for M1: Socket closed
+Connection Handler Error for M1: Socket closed
+Connection Handler Error for M3: null
+Connection Handler Error for M1: Socket closed
+Connection Handler Error for M2: null
+Connection Handler Error for M1: Socket closed
+Connection Handler Error for M6: null
+Connection Handler Error for M5: null
+Member M2 has stopped running.Connection Handler Error for M8: null
+
+Connection Handler Error for M9: null
+Connection Handler Error for M1: Socket closed
+Connection Handler Error for M4: null
+Connection Handler Error for M1: Socket closed
+Connection Handler Error for M3: null
+Connection Handler Error for M2: Socket closed
+Connection Handler Error for M1: null
+Connection Handler Error for M2: Socket closed
+Connection Handler Error for M2: Socket closed
+Member M4 has stopped running.
+Connection Handler Error for M1: Socket closed
+Connection Handler Error for M7: null
+Connection Handler Error for M4: Socket closed
+Connection Handler Error for M1: Socket closed
+Connection Handler Error for M4: Socket closed
+Connection Handler Error for M2: null
+Connection Handler Error for M1: null
+Connection Handler Error for M9: null
+Member M5 has stopped running.Connection Handler Error for M4: Socket closed
+
+Connection Handler Error for M8: null
+Connection Handler Error for M2: Socket closed
+Connection Handler Error for M7: null
+Connection Handler Error for M5: Socket closed
+Connection Handler Error for M2: Socket closed
+Connection Handler Error for M2: Socket closed
+Connection Handler Error for M6: null
+Connection Handler Error for M2: Socket closed
+Member M6 has stopped running.Connection Handler Error for M5: null
+
+Connection Handler Error for M9: null
+Connection Handler Error for M2: Socket closed
+Connection Handler Error for M4: null
+Connection Handler Error for M2: null
+Connection Handler Error for M6: Socket closed
+Connection Handler Error for M6: Socket closed
+Connection Handler Error for M1: null
+Connection Handler Error for M5: null
+Connection Handler Error for M6: Socket closed
+Member M7 has stopped running.Connection Handler Error for M8: null
+
+Connection Handler Error for M5: Socket closed
+Connection Handler Error for M7: null
+Connection Handler Error for M7: Socket closed
+Connection Handler Error for M5: Socket closed
+Connection Handler Error for M6: null
+Connection Handler Error for M5: Socket closed
+Connection Handler Error for M4: null
+Connection Handler Error for M5: Socket closed
+Connection Handler Error for M3: null
+Member M8 has stopped running.Connection Handler Error for M5: Socket closed
+
+Connection Handler Error for M5: Socket closed
+Connection Handler Error for M2: null
+Connection Handler Error for M5: Socket closed
+Connection Handler Error for M3: null
+Connection Handler Error for M1: null
+Connection Handler Error for M9: null
+Connection Handler Error for M8: null
+Connection Handler Error for M4: Socket closed
+Connection Handler Error for M7: null
+Connection Handler Error for M4: Socket closed
+Member M9 has stopped running.Connection Handler Error for M6: null
+
+Connection Handler Error for M4: Socket closed
+Connection Handler Error for M5: null
+Connection Handler Error for M4: Socket closed
+Connection Handler Error for M3: null
+Connection Handler Error for M9: Socket closed
+Connection Handler Error for M2: null
+Connection Handler Error for M9: Socket closed
+Connection Handler Error for M7: null
+Connection Handler Error for M9: Socket closed
+Connection Handler Error for M1: null
+Connection Handler Error for M9: Socket closed
+Connection Handler Error for M8: null
+Connection Handler Error for M8: Socket closed
+Connection Handler Error for M7: null
+Connection Handler Error for M8: Socket closed
+Connection Handler Error for M6: null
+Connection Handler Error for M8: Socket closed
+Connection Handler Error for M5: null
+Connection Handler Error for M8: Socket closed
+Connection Handler Error for M4: null
+Connection Handler Error for M8: Socket closed
+Connection Handler Error for M8: Socket closed
+Connection Handler Error for M2: null
+Connection Handler Error for M8: Socket closed
+Connection Handler Error for M1: null
+Connection Handler Error for M8: Socket closed
+Connection Handler Error for M9: null
+Connection Handler Error for M7: Socket closed
+Connection Handler Error for M6: null
+Connection Handler Error for M7: Socket closed
+Connection Handler Error for M5: null
+Connection Handler Error for M7: Socket closed
+Connection Handler Error for M4: null
+Connection Handler Error for M7: Socket closed
+Connection Handler Error for M3: null
+Connection Handler Error for M7: Socket closed
+Connection Handler Error for M2: null
+Connection Handler Error for M1: null
+Connection Handler Error for M7: Socket closed
+Connection Handler Error for M9: null
+Connection Handler Error for M7: Socket closed
+Connection Handler Error for M8: null
+Connection Handler Error for M6: Socket closed
+Connection Handler Error for M6: Socket closed
+Connection Handler Error for M7: null
+Connection Handler Error for M6: Socket closed
+Connection Handler Error for M4: null
+Connection Handler Error for M6: Socket closed
+Connection Handler Error for M3: null
+Connection Handler Error for M6: Socket closed
+Connection Handler Error for M9: Socket closed
+Connection Handler Error for M6: null
+Connection Handler Error for M9: Socket closed
+Connection Handler Error for M5: null
+Connection Handler Error for M9: Socket closed
+Connection Handler Error for M4: null
+Connection Handler Error for M9: Socket closed
+
+Scenario 3 Test Complete.

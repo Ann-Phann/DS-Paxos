@@ -1,0 +1,206 @@
+==========================================
+    Testing Scenario 1: Ideal Network
+==========================================
+Starting Paxos Council...
+Loaded config for M1: localhost:9001
+Loaded config for M2: localhost:9002
+Loaded config for M3: localhost:9003
+Loaded config for M4: localhost:9004
+Loaded config for M5: localhost:9005
+Loaded config for M6: localhost:9006
+Loaded config for M7: localhost:9007
+Loaded config for M8: localhost:9008
+Loaded config for M9: localhost:9009
+M1 failed to connect to M2 at localhost:9002. Retrying later...
+M1 failed to connect to M3 at localhost:9003. Retrying later...
+M1 failed to connect to M4 at localhost:9004. Retrying later...
+M1 failed to connect to M5 at localhost:9005. Retrying later...
+M1 failed to connect to M6 at localhost:9006. Retrying later...
+M1 failed to connect to M7 at localhost:9007. Retrying later...
+M1 failed to connect to M8 at localhost:9008. Retrying later...
+M1 failed to connect to M9 at localhost:9009. Retrying later...
+Started M1 on port 9001
+Member M1 listening on port 9001 with profile: RELIABLE
+M2 connected to peer M1 on port 9001
+M2 failed to connect to M3 at localhost:9003. Retrying later...
+M2 failed to connect to M4 at localhost:9004. Retrying later...
+M2 failed to connect to M5 at localhost:9005. Retrying later...
+M2 failed to connect to M6 at localhost:9006. Retrying later...
+M2 failed to connect to M7 at localhost:9007. Retrying later...
+M2 failed to connect to M8 at localhost:9008. Retrying later...
+M2 failed to connect to M9 at localhost:9009. Retrying later...
+Started M2 on port 9002
+Member M2 listening on port 9002 with profile: RELIABLE
+M3 connected to peer M1 on port 9001
+M3 connected to peer M2 on port 9002
+M3 failed to connect to M4 at localhost:9004. Retrying later...
+M3 failed to connect to M5 at localhost:9005. Retrying later...
+M3 failed to connect to M6 at localhost:9006. Retrying later...
+M3 failed to connect to M7 at localhost:9007. Retrying later...
+M3 failed to connect to M8 at localhost:9008. Retrying later...
+M3 failed to connect to M9 at localhost:9009. Retrying later...
+Started M3 on port 9003
+Member M3 listening on port 9003 with profile: RELIABLE
+M4 connected to peer M1 on port 9001
+M4 connected to peer M2 on port 9002
+M4 connected to peer M3 on port 9003
+M4 failed to connect to M5 at localhost:9005. Retrying later...
+M4 failed to connect to M6 at localhost:9006. Retrying later...
+M4 failed to connect to M7 at localhost:9007. Retrying later...
+M4 failed to connect to M8 at localhost:9008. Retrying later...
+M4 failed to connect to M9 at localhost:9009. Retrying later...
+Started M4 on port 9004
+Member M4 listening on port 9004 with profile: RELIABLE
+M5 connected to peer M1 on port 9001
+M5 connected to peer M2 on port 9002
+M5 connected to peer M3 on port 9003
+M5 connected to peer M4 on port 9004
+M5 failed to connect to M6 at localhost:9006. Retrying later...
+M5 failed to connect to M7 at localhost:9007. Retrying later...
+M5 failed to connect to M8 at localhost:9008. Retrying later...
+M5 failed to connect to M9 at localhost:9009. Retrying later...
+Started M5 on port 9005
+Member M5 listening on port 9005 with profile: RELIABLE
+M6 connected to peer M1 on port 9001
+M6 connected to peer M2 on port 9002
+M6 connected to peer M3 on port 9003
+M6 connected to peer M4 on port 9004
+M6 connected to peer M5 on port 9005
+M6 failed to connect to M7 at localhost:9007. Retrying later...
+M6 failed to connect to M8 at localhost:9008. Retrying later...
+M6 failed to connect to M9 at localhost:9009. Retrying later...
+Started M6 on port 9006
+Member M6 listening on port 9006 with profile: RELIABLE
+M7 connected to peer M1 on port 9001
+M7 connected to peer M2 on port 9002
+M7 connected to peer M3 on port 9003
+M7 connected to peer M4 on port 9004
+M7 connected to peer M5 on port 9005
+M7 connected to peer M6 on port 9006
+M7 failed to connect to M8 at localhost:9008. Retrying later...
+M7 failed to connect to M9 at localhost:9009. Retrying later...
+Started M7 on port 9007
+Member M7 listening on port 9007 with profile: RELIABLE
+M8 connected to peer M1 on port 9001
+M8 connected to peer M2 on port 9002
+M8 connected to peer M3 on port 9003
+M8 connected to peer M4 on port 9004
+M8 connected to peer M5 on port 9005
+M8 connected to peer M6 on port 9006
+M8 connected to peer M7 on port 9007
+M8 failed to connect to M9 at localhost:9009. Retrying later...
+Started M8 on port 9008
+Member M8 listening on port 9008 with profile: RELIABLE
+M9 connected to peer M1 on port 9001
+M9 connected to peer M2 on port 9002
+M9 connected to peer M3 on port 9003
+M9 connected to peer M4 on port 9004
+M9 connected to peer M5 on port 9005
+M9 connected to peer M6 on port 9006
+M9 connected to peer M7 on port 9007
+M9 connected to peer M8 on port 9008
+Started M9 on port 9009
+Member M9 listening on port 9009 with profile: RELIABLE
+M1 connected to peer M2 on port 9002
+M1 connected to peer M3 on port 9003
+M1 connected to peer M4 on port 9004
+M1 connected to peer M5 on port 9005
+M1 connected to peer M6 on port 9006
+M1 connected to peer M7 on port 9007
+M1 connected to peer M8 on port 9008
+M1 connected to peer M9 on port 9009
+M1 established connections to all peers.
+M2 connected to peer M3 on port 9003
+M2 connected to peer M4 on port 9004
+M2 connected to peer M5 on port 9005
+M2 connected to peer M6 on port 9006
+M2 connected to peer M7 on port 9007
+M2 connected to peer M8 on port 9008
+M3 connected to peer M4 on port 9004
+M4 connected to peer M5 on port 9005
+M2 connected to peer M9 on port 9009
+M3 connected to peer M5 on port 9005
+M2 established connections to all peers.
+M4 connected to peer M6 on port 9006
+M3 connected to peer M6 on port 9006
+M4 connected to peer M7 on port 9007
+M3 connected to peer M7 on port 9007
+M4 connected to peer M8 on port 9008
+M3 connected to peer M8 on port 9008
+M4 connected to peer M9 on port 9009
+M4 established connections to all peers.
+M3 connected to peer M9 on port 9009
+M3 established connections to all peers.
+M5 connected to peer M6 on port 9006
+M5 connected to peer M7 on port 9007
+M5 connected to peer M8 on port 9008
+M5 connected to peer M9 on port 9009
+M5 established connections to all peers.
+M6 connected to peer M7 on port 9007
+M6 connected to peer M8 on port 9008
+M6 connected to peer M9 on port 9009
+M6 established connections to all peers.
+M7 connected to peer M8 on port 9008
+M7 connected to peer M9 on port 9009
+M7 established connections to all peers.
+M8 connected to peer M9 on port 9009
+M8 established connections to all peers.
+
+All members are running. Connections should be established.
+---------------------------------------------------------
+CONSOLE: Use the format 'PROPOSE M[ID] V[VALUE]' (e.g., PROPOSE M4 V5) or 'QUIT'
+> PROPOSE M4 V5
+> M4 initiating proposal for value 5...
+M4 starting Phase 1a with Prepare(n=14)
+M2 sent PROMISE for N=14
+M2 sent PROMISE for N=14
+M1 sent PROMISE for N=14
+M1 sent PROMISE for N=14
+M9 sent PROMISE for N=14
+M9 sent PROMISE for N=14
+M3 sent PROMISE for N=14
+M3 sent PROMISE for N=14
+M4 received PROMISE for N=14
+M4 received PROMISE for N=14
+M5 sent PROMISE for N=14
+M5 sent PROMISE for N=14
+M8 sent PROMISE for N=14
+M8 sent PROMISE for N=14
+M4 received PROMISE for N=14
+M4 received PROMISE for N=14
+M4 received PROMISE for N=14
+M4 received majority PROMISES for n=14
+M4 starting Phase 2a with RequestAccept(n=14, v=5)
+M6 sent PROMISE for N=14
+M6 sent PROMISE for N=14
+M5 sent ACCEPTED for N=14
+M7 sent PROMISE for N=14
+M7 sent PROMISE for N=14
+M4 received PROMISE for N=14
+M1 sent ACCEPTED for N=14
+M4 received PROMISE for N=14
+M9 sent ACCEPTED for N=14
+M8 sent ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M6 sent ACCEPTED for N=14
+M7 sent ACCEPTED for N=14
+M2 sent ACCEPTED for N=14
+M3 sent ACCEPTED for N=14
+M4 received PROMISE for N=14
+M4 received ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M4 received ACCEPTED for N=14
+M4 received majority ACCEPTED for n=14
+M4 starting Phase 3 with DECIDE(n=14, v=5)
+M4 proposal attempt finished.
+M3: CONSENSUS: M5 has been elected Council President!
+M1: CONSENSUS: M5 has been elected Council President!
+M5: CONSENSUS: M5 has been elected Council President!
+M8: CONSENSUS: M5 has been elected Council President!
+M6: CONSENSUS: M5 has been elected Council President!
+M9: CONSENSUS: M5 has been elected Council President!
+M7: CONSENSUS: M5 has been elected Council President!
+M2: CONSENSUS: M5 has been elected Council President!
+> > > > > > > > > > > > > > > > > > > > >
+
