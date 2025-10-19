@@ -87,7 +87,7 @@ public class ProposerLogic {
                 long timeRemaining = TIMEOUT_MS - timeElapsed;
 
                 if (timeRemaining <= 0) {
-                    System.out.println(member.getMemIdInt() + " Phase 1a FAILED (Timeout)");
+                    System.out.println("M" + member.getMemIdInt() + " Phase 1a FAILED (Timeout)");
                     member.promisedResponses.remove(n);
                     return null;
                 }
@@ -107,7 +107,7 @@ public class ProposerLogic {
         
             // If  exit the loop, the quorum must have been met (or  shut down)
             if (promises != null && promises.size() >= MAJORITY) {
-                System.out.println(member.getMemIdInt() + " received majority PROMISES for n=" + n);
+                System.out.println("M" + member.getMemIdInt() + " received majority PROMISES for n=" + n);
                 
                 // ** 1. FIND THE HIGHEST N ACROSS ALL PROMISES **
                 int highestN = n; // Start with our own N
@@ -143,7 +143,7 @@ public class ProposerLogic {
      */
     private boolean phase2aRequestAccept(int n, int v) {
         member.acceptedResponses.put(n, new CopyOnWriteArrayList<>());
-        System.out.println(member.getMemIdInt() + " starting Phase 2a with RequestAccept(n=" + n + ", v=" + v + ")");
+        System.out.println("M" + member.getMemIdInt() + " starting Phase 2a with RequestAccept(n=" + n + ", v=" + v + ")");
 
         // NETWORK Stub: Send REQUEST_ACCEPT(n, v) to all members
         RequestAccept requestAcceptMsg = new RequestAccept(n, v);
@@ -159,7 +159,7 @@ public class ProposerLogic {
                 long timeRemaining = TIMEOUT_MS - timeElapsed;
 
                 if (timeRemaining <= 0) {
-                    System.out.println(member.getMemIdInt() + " Phase 2a FAILED (Timeout)");
+                    System.out.println("M" + member.getMemIdInt() + " Phase 2a FAILED (Timeout)");
                     member.acceptedResponses.remove(n); 
                     return false;
                 }
@@ -226,7 +226,7 @@ public class ProposerLogic {
         }
 
         if (highestAcceptedN > -1) {
-            System.out.println(member.getMemIdInt() + " adopting value V=" + adoptedValue + " from N=" + highestAcceptedN);
+            System.out.println("M" + member.getMemIdInt() + " adopting value V=" + adoptedValue + " from N=" + highestAcceptedN);
         }
         return adoptedValue;
     }

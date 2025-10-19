@@ -45,7 +45,7 @@ public class ConnectionHandler implements Runnable {
                 
                 // Get member profile rule 
                 if (member.getProfile().shouldDropMessage()) {
-                    System.out.println(member.getMemIdInt() + " DROPPED message: " + message.type);
+                    System.out.println("M" + member.getMemIdInt() + " DROPPED message: " + message.type);
                     continue; // Skip processing and wait for next message
                 }
 
@@ -56,7 +56,7 @@ public class ConnectionHandler implements Runnable {
                 messageProcess.process(message);
             }
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Connection Handler Error for " + member.getMemIdInt() + ": " + e.getMessage());
+            System.err.println("Connection Handler Error for " + "M" + member.getMemIdInt() + ": " + e.getMessage());
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         } finally {

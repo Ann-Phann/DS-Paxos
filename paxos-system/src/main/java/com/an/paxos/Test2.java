@@ -86,7 +86,10 @@ public class Test2 {
             e.printStackTrace();
         } finally {
             // Ensure the main process exits
+            System.out.println("\nScenario 2 Test Complete. Shuting down...");
+            shutdownAllMembers();
             System.out.println("\nScenario 2 Test Complete.");
+
             System.exit(0);
         }
     }
