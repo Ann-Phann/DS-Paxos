@@ -5,7 +5,6 @@ import com.an.paxos.profile.MemberProfile;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Executes Scenario 2: Concurrent Proposals (M1 proposes 1, M8 proposes 8)
@@ -14,7 +13,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Test2 {
 
     private static final Map<Integer, CouncilMember> members = new HashMap<>();
-    private static final AtomicBoolean running = new AtomicBoolean(true);
 
     public static void main(String[] args) {
         System.out.println("Starting Paxos Council for Scenario 2 (Concurrent Proposals)...");
