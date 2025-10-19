@@ -27,6 +27,13 @@ public class ProposerLogic {
      */
     public Boolean propose(int initialValue) {
         while (member.isRunning() && !member.getDecided()) {
+            // edge case: check the max valid member id 
+            int maxMemberId = ConfigReader.getAllMembersMap().size();
+
+            if (initialValue < 0 || initialValue > maxMemberId) {
+                System.out.println("Initial value " + initialValue + " is invalid. It must be between 1 and " + maxMemberId);
+                return false;
+            }
             // 1. Get new proposal N from member.proposalGenerator.getNextProposalNumber()
             int n = member.getProposalNumberGenerator().getNextProposalNumber();
 

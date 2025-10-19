@@ -28,6 +28,15 @@ public class ConnectionHandler implements Runnable {
         this.outputStream.flush(); // Ensure header is sent immediately
         this.messageProcess = new MessageProcess(member, outputStream);
     }
+
+    public ConnectionHandler(CouncilMember member, Socket peerSocket, 
+                         ObjectInputStream inputStream, ObjectOutputStream outputStream) {
+        this.member = member;
+        this.peerSocket = peerSocket;
+        this.inputStream = inputStream; // Use the existing stream
+        this.outputStream = outputStream; // Use the existing stream
+        this.messageProcess = new MessageProcess(member, outputStream);
+    }
     @Override
     public void run() {
         try {
