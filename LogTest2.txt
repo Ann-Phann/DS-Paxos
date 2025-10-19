@@ -1,5 +1,7 @@
 [INFO] --- exec:3.6.2:java (default-cli) @ paxos-system ---
-Starting Paxos Council for Scenario 2 (Concurrent Proposals)...
+==========================================
+ Testing Scenario 2: Concurrent Proposals 
+==========================================
 Loaded config for M1: localhost:9001
 Loaded config for M2: localhost:9002
 Loaded config for M3: localhost:9003

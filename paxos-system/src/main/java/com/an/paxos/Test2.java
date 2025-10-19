@@ -15,7 +15,9 @@ public class Test2 {
     private static final Map<Integer, CouncilMember> members = new HashMap<>();
 
     public static void main(String[] args) {
-        System.out.println("Starting Paxos Council for Scenario 2 (Concurrent Proposals)...");
+        System.out.println("==========================================");
+        System.out.println(" Testing Scenario 2: Concurrent Proposals ");
+        System.out.println("==========================================");
 
         try {
             // 0. Initial Setup
