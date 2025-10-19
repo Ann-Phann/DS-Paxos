@@ -9,7 +9,7 @@ public enum MemberProfile {
     // MinDelay, MaxDelay (ms), MessageDropRate (0.0 to 1.0)
     RELIABLE(0, 50, 0.0),      // Near-zero latency, no drops
     STANDARD(100, 300, 0.01),  // Normal jitter, 1% drop rate
-    LATENT(400, 800, 0.0),     // High, consistent delay, no drops
+    LATENT(400, 700, 0.0),     // High, consistent delay, no drops
     FAILURE(100, 300, 0.1);   // Normal jitter, 5% drop rate (simulating slow/faulty members)
 
     private final int minDelay;

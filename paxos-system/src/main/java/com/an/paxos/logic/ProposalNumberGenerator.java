@@ -49,4 +49,10 @@ public class ProposalNumberGenerator {
             localCounter = highestCounter + 1;
         }
     }
+
+    public synchronized void setLocalCounter(int newCounter) {
+        if (newCounter > localCounter) {
+            this.localCounter = newCounter;
+        }
+    }
 }

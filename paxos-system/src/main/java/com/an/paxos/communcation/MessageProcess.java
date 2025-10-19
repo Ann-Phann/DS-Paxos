@@ -5,6 +5,7 @@ import com.an.paxos.messages.*;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Handles message processing and routing within a CouncilMember.
@@ -65,7 +66,7 @@ public class MessageProcess {
                 outputStream.reset();
             }
             
-            System.out.println(member.getMemIdInt() + " sent PROMISE for N=" + request.proposalNumber);
+            System.out.println("M" +member.getMemIdInt() + " sent PROMISE for N=" + request.proposalNumber);
         }
     }
 
@@ -80,7 +81,7 @@ public class MessageProcess {
                 outputStream.reset();
             }
             
-            System.out.println(member.getMemIdInt() + " sent ACCEPTED for N=" + request.proposalNumber);
+            System.out.println("M" +member.getMemIdInt() + " sent ACCEPTED for N=" + request.proposalNumber);
         }
     }
 
@@ -94,7 +95,7 @@ public class MessageProcess {
                 
                 // 2. Add the response (protected by the lock)
                 member.promisedResponses.get(response.proposalNumber).add(response);
-                System.out.println(member.getMemIdInt() + " received PROMISE for N=" + response.proposalNumber);
+                System.out.println("M" +member.getMemIdInt() + " received PROMISE for N=" + response.proposalNumber);
                 
                 // 3. Check for quorum and notify (while still holding the lock)
                 if (member.promisedResponses.get(response.proposalNumber).size() >= member.getProposerLogic().getMajority()) {
@@ -107,15 +108,18 @@ public class MessageProcess {
 
     private void handleAccepted(Accept response) {
         synchronized (member.lock) {
+            CopyOnWriteArrayList<Accept> acceptedList= member.acceptedResponses.get(response.acceptedN);
+            
             // Only add if the Proposer is currently tracking this proposal number
-            if (member.acceptedResponses.containsKey(response.acceptedN)) {
+            // if (member.acceptedResponses.containsKey(response.acceptedN)) {
+            if (acceptedList != null) {
                 
                 // 1. Add the response (protected by the lock)
                 member.acceptedResponses.get(response.acceptedN).add(response);
-                System.out.println(member.getMemIdInt() + " received ACCEPTED for N=" + response.acceptedN);
+                System.out.println("M" + member.getMemIdInt() + " received ACCEPTED for N=" + response.acceptedN);
             
                 // 2. Check for quorum and notify (while still holding the lock)
-                if (member.acceptedResponses.get(response.acceptedN).size() >= member.getProposerLogic().getMajority()) {
+                if (acceptedList.size() >= member.getProposerLogic().getMajority()) {
                     // Wake up all threads waiting on this lock (i.e., the Proposer thread)
                     member.lock.notifyAll();
                 }
@@ -129,6 +133,6 @@ public class MessageProcess {
         member.setDecidedN(request.decidedN);
         member.setDecidedValue(request.decidedValue);
         member.setDecided(true);
-        System.out.println("CONSENSUS: M" + request.decidedValue + " has been elected Council President!");
+        System.out.println("M" + member.getMemIdInt() + ": " + "CONSENSUS: M" + request.decidedValue + " has been elected Council President!");
     }
 }

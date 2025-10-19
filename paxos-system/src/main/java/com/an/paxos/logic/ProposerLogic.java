@@ -13,7 +13,7 @@ import com.an.paxos.profile.ConfigReader;
 public class ProposerLogic {
     private final CouncilMember member;
     private final int MAJORITY;
-    private static final int TIMEOUT_MS = 5000; // Timeout for waiting responses
+    private static final int TIMEOUT_MS = 15000; // Timeout for waiting responses
 
     public ProposerLogic(CouncilMember member) {
         this.member = member;
@@ -29,7 +29,6 @@ public class ProposerLogic {
         while (member.isRunning() && !member.getDecided()) {
             // edge case: check the max valid member id 
             int maxMemberId = ConfigReader.getAllMembersMap().size();
-
             if (initialValue < 0 || initialValue > maxMemberId) {
                 System.out.println("Initial value " + initialValue + " is invalid. It must be between 1 and " + maxMemberId);
                 return false;
@@ -42,7 +41,7 @@ public class ProposerLogic {
 
             if (promises == null) {
                 try {
-                    Thread.sleep(200); // Brief pause before retrying
+                    Thread.sleep(2000); // Brief pause before retrying
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
@@ -53,7 +52,7 @@ public class ProposerLogic {
 
             boolean accepted = phase2aRequestAccept(n, v);
             if (!accepted) {
-                try { Thread.sleep(200); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+                try { Thread.sleep(2000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
                 continue; // Failed to get majority ACCEPTED, retry
             }
 
@@ -72,7 +71,7 @@ public class ProposerLogic {
      */
     private List<Promise> phase1aPrepare(int n) {
         member.promisedResponses.put(n, new CopyOnWriteArrayList<>());
-        System.out.println(member.getMemIdInt() + " starting Phase 1a with Prepare(n=" + n + ")");
+        System.out.println("M" + member.getMemIdInt() + " starting Phase 1a with Prepare(n=" + n + ")");
         
         // NETWORK Stub: Send PREPARE(n) to all members
         Prepare prepareMsg = new Prepare(n);
@@ -122,6 +121,10 @@ public class ProposerLogic {
                 // ** 2. CRITICAL: UPDATE THE GENERATOR **
                 if (highestN > n) {
                     member.getProposalNumberGenerator().updateCounter(highestN);
+                    System.out.println("M" + member.getMemIdInt() + " was REJECTED by higher N=" + highestN + ". RETRYING Phase1a with new N");
+
+                    member.promisedResponses.remove(n);
+                    return null;
                 }
 
                 return promises;
@@ -176,7 +179,7 @@ public class ProposerLogic {
         
             // If  exit the loop, the quorum must have been met (or  shut down)
             if (accepts != null && accepts.size() >= MAJORITY) {
-                System.out.println(member.getMemIdInt() + " received majority ACCEPTED for n=" + n);
+                System.out.println("M" + member.getMemIdInt() + " received majority ACCEPTED for n=" + n);
                 return true;
             }
             // Should only be reached if member.isRunning() is false
@@ -185,7 +188,7 @@ public class ProposerLogic {
     }
 
     private void phase3Decide(int n, int v) {
-        System.out.println(member.getMemIdInt() + " starting Phase 3 with DECIDE(n=" + n + ", v=" + v + ")");
+        System.out.println("M" + member.getMemIdInt() + " starting Phase 3 with DECIDE(n=" + n + ", v=" + v + ")");
 
         // NETWORK Stub: Send DECIDE(n, v) to all members
         Decide decideMsg = new Decide(n, v);

@@ -136,6 +136,13 @@ public class CouncilMember implements Runnable {
         outgoingStreams.clear();
     }
 
+    public void resetLearnerState() {
+        // Reset Learner State
+        this.decided = false;
+        this.decidedN = -1;
+        this.decidedValue = -1;
+    }
+
     public void addOutgoingStream(int port, ObjectOutputStream stream) {
         outgoingStreams.put(port, stream);
     }

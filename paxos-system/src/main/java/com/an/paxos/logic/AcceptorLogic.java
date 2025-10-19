@@ -25,9 +25,14 @@ public class AcceptorLogic {
      */
     public synchronized Promise promise (int n) {        
         if (n < member.getHighestPromisedN()) {
+            System.out.println("M" + member.getMemIdInt() + " NACK: " + n + " < promised=" + member.getHighestPromisedN());
+
+            // return new Promise(member.getHighestPromisedN(), -1, -1); 
             return null; // Indicate reject the prepare request - NACK implicitly
+            
         } 
         member.setHighestPromisedN(n);
+        System.out.println("M" + member.getMemIdInt() + " sent PROMISE for N=" + n);
         return new Promise(n, member.getAcceptedN(), member.getAcceptedValue());
     }
 
@@ -42,6 +47,7 @@ public class AcceptorLogic {
      */
     public synchronized Accept accept(int n, int v) {
         if (n < member.getHighestPromisedN()) {
+            System.out.println("M" + member.getMemIdInt() + " REJECTED Accept: " + n + " < promised=" + member.getHighestPromisedN());
            return null; // Indicate reject the accept request - NACK implicitly
         }
         member.setAcceptedN(n);

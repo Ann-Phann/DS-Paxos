@@ -8,11 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class Test1 {
     // Map to hold references to all running CouncilMember instances
     private static final Map<Integer, CouncilMember> members = new HashMap<>();
 
     public static void main(String[] args) {
+        System.out.println("==========================================");
+        System.out.println("    Testing Scenario 1: Ideal Network     ");
+        System.out.println("==========================================");
+
         System.out.println("Starting Paxos Council...");
         
         try {
@@ -34,9 +38,9 @@ public class Main {
             }
 
             // Give the system a moment to establish all peer-to-peer connections
-            Thread.sleep(3000); 
+            Thread.sleep(5000); 
             System.out.println("\nAll members are running. Connections should be established.");
-            System.out.println("---------------------------------------------------------");
+            System.out.println("-ol--------------------------------------------------------");
 
             // 2. Start the Interactive Console
             startInteractiveConsole();
@@ -50,7 +54,7 @@ public class Main {
 
     private static void startInteractiveConsole() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("CONSOLE: Use the format 'PROPOSE M[ID] V[VALUE]' (e.g., PROPOSE M1 V10) or 'QUIT'");
+        System.out.println("CONSOLE: Use the format 'PROPOSE M[ID] V[VALUE]' (e.g., PROPOSE M4 V5) or 'QUIT'");
 
         while (true) {
             System.out.print("> ");
