@@ -87,26 +87,6 @@ public class MessageProcess {
     // === Proposer Response Handlers (Update CouncilMember State) ===
 
     private void handlePromise(Promise response) {
-        // synchronized (member.lock) {
-        // // Only add if the Proposer is currently tracking this proposal number
-        //     if (member.promisedResponses.containsKey(response.proposalNumber)) {
-        //         // Add the promise to the list
-        //         member.promisedResponses.get(response.proposalNumber).add(response);
-        //         System.out.println(member.getMemIdInt() + " received PROMISE for N=" + response.proposalNumber);
-                
-        //         // check for quorum and notify waiting proposer thread
-        //         // synchronized (member.lock) {
-        //         //     if (member.promisedResponses.get(response.proposalNumber).size() >= member.getProposerLogic().getMajority()) {
-        //         //         // wake up all threads waiting on the lock
-        //         //         member.lock.notifyAll();
-        //         //     }
-        //         // }
-        //         if (member.promisedResponses.get(response.proposalNumber).size() >= member.getProposerLogic().getMajority()) {
-        //             member.lock.notifyAll();
-        //         }
-        //     }
-        // }
-
         synchronized (member.lock) { 
         
             // 1. Only proceed if the Proposer is currently tracking this proposal number
@@ -126,28 +106,8 @@ public class MessageProcess {
     }
 
     private void handleAccepted(Accept response) {
-        // synchronized (member.lock) {
-        // // Only add if the Proposer is currently tracking this proposal number
-        //     if (member.acceptedResponses.containsKey(response.acceptedN)) {
-        //         // Add the accept response to the list
-        //         member.acceptedResponses.get(response.acceptedN).add(response);
-        //         System.out.println(member.getMemIdInt() + " received ACCEPTED for N=" + response.acceptedN);
-            
-        //         // check for quorum and notify waiting proposer thread
-        //         // synchronized (member.lock) {
-        //         //     // Check if the Quorum condition is met *after* adding the response
-        //         //     if (member.acceptedResponses.get(response.acceptedN).size() >= member.getProposerLogic().getMajority()) {
-        //         //         // Wake up all threads waiting on this lock (i.e., the Proposer thread)
-        //         //         member.lock.notifyAll();
-        //         //     }
-        //         // }
-
-        //         if (member.acceptedResponses.get(response.acceptedN).size() >= member.getProposerLogic().getMajority()) {
-        //             member.lock.notifyAll();
-        //         }
-        //     }
-        // }
         synchronized (member.lock) {
+            // Only add if the Proposer is currently tracking this proposal number
             if (member.acceptedResponses.containsKey(response.acceptedN)) {
                 
                 // 1. Add the response (protected by the lock)
@@ -156,6 +116,7 @@ public class MessageProcess {
             
                 // 2. Check for quorum and notify (while still holding the lock)
                 if (member.acceptedResponses.get(response.acceptedN).size() >= member.getProposerLogic().getMajority()) {
+                    // Wake up all threads waiting on this lock (i.e., the Proposer thread)
                     member.lock.notifyAll();
                 }
             }

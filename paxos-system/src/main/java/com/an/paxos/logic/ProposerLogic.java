@@ -106,7 +106,7 @@ public class ProposerLogic {
                 promises = member.promisedResponses.get(n);
             }
         
-            // If we exit the loop, the quorum must have been met (or we shut down)
+            // If  exit the loop, the quorum must have been met (or  shut down)
             if (promises != null && promises.size() >= MAJORITY) {
                 System.out.println(member.getMemIdInt() + " received majority PROMISES for n=" + n);
                 
@@ -174,7 +174,7 @@ public class ProposerLogic {
                 accepts = member.acceptedResponses.get(n);
             }
         
-            // If we exit the loop, the quorum must have been met (or we shut down)
+            // If  exit the loop, the quorum must have been met (or  shut down)
             if (accepts != null && accepts.size() >= MAJORITY) {
                 System.out.println(member.getMemIdInt() + " received majority ACCEPTED for n=" + n);
                 return true;

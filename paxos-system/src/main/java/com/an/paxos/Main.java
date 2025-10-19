@@ -97,7 +97,7 @@ public class Main {
     
     private static void shutdownAllMembers() {
         for (CouncilMember member : members.values()) {
-            member.stop(); // Assuming you have a stop method in CouncilMember
+            member.stop(); 
         }
     }
 }

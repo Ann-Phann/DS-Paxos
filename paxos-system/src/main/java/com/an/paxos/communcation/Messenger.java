@@ -20,7 +20,7 @@ public class Messenger {
     private final CouncilMember member;
     private static final int RETRY_INTERVAL_MS = 5000;
 
-    // List of peers we have not successfully connected to yet 
+    // List of peers  have not successfully connected to yet 
     private final List<MemberInfo> failedPeers = Collections.synchronizedList(new ArrayList<>());
 
     public Messenger(CouncilMember member) {
@@ -68,25 +68,20 @@ public class Messenger {
             // cache the stream for future broadcasts
             member.addOutgoingStream(peer.getPort(), outputStream);
 
-            // ==========================================================
-        // *** CRITICAL ADDITION: Start the Client-Side Receiver ***
-        // ==========================================================
-        
-        // 1. Create a ConnectionHandler instance.
-        //    NOTE: This requires your ConnectionHandler to have a new constructor 
-        //    that accepts the already-created streams, as discussed previously.
-        ConnectionHandler clientRxHandler = new ConnectionHandler(
-            member, socket, inputStream, outputStream
-        );
+            
+            // *** Start the Client-Side Receiver ***
+            // 1. Create a ConnectionHandler instance.
+            ConnectionHandler clientRxHandler = new ConnectionHandler(
+                member, socket, inputStream, outputStream
+            );
 
-        // 2. Start the handler thread. This thread is the one that blocks on 
-        //    inputStream.readObject() and processes the PROMISE/ACCEPTED responses.
-        new Thread(
-            clientRxHandler, 
-            "Client-Rx-M" + member.getMemIdInt() + "-to-M" + peer.getMemIdInt()
-        ).start();
+            // 2. Start the handler thread. This thread is the one that blocks on 
+            //    inputStream.readObject() and processes the PROMISE/ACCEPTED responses.
+            new Thread(
+                clientRxHandler, 
+                "Client-Rx-M" + member.getMemIdInt() + "-to-M" + peer.getMemIdInt()
+            ).start();
 
-        // ==========================================================
             System.out.println("M" + member.getMemIdInt() + " connected to peer M" + peer.getMemIdInt() + 
                                 " on port " + peer.getPort());
 

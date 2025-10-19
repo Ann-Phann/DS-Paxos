@@ -44,7 +44,7 @@ public class ProposalNumberGenerator {
     public synchronized void updateCounter(int highestN) {
         int highestCounter = highestN / ID_MULTIPLIER;
         
-        // We must generate a number based on a counter strictly greater than the highest counter seen.
+        // generate a number based on a counter strictly greater than the highest counter seen.
         if (highestCounter >= localCounter) {
             localCounter = highestCounter + 1;
         }
