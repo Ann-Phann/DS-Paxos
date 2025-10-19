@@ -40,7 +40,7 @@ public class Test1 {
             // Give the system a moment to establish all peer-to-peer connections
             Thread.sleep(5000); 
             System.out.println("\nAll members are running. Connections should be established.");
-            System.out.println("-ol--------------------------------------------------------");
+            System.out.println("---------------------------------------------------------");
 
             // 2. Start the Interactive Console
             startInteractiveConsole();
